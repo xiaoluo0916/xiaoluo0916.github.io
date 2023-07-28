@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CS416 Narrative Visualization Project</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <!-- <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script> -->
+    <script src="scripts/charts.js"></script>
+
+    <!-- Optional theme -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload='scene1()'>
+<div class="container">
+    <div id="index-slide">
+        <h2>Have you wondered what the labour productivity and work hours look like in different countries?</h2>
+        <div class="jumbotron">
+            <ul>
+                <li class="font-size-lg mt-50"><span>&#128119;</span> For instance, countries like Myanmar have some of the lowest
+                    GDP per capita but highest working hours.
+                </li>
+                <li class="font-size-lg mt-30"><span>⚒️️</span> In Myanmar, the average worker puts in approximately 2400
+                    hours each year, nearly 900 more hours than in France (1,500 hours).
+                </li>
+                <li class="font-size-lg mt-30">😓</span> The extra 900
+                    hours for Myanmar workers means longer work days and far fewer holidays.
+                </li>
+            </ul>
+            <h4 class="mt-30">
+                This interactive slideshow compares the working hours between different countries
+                and the hours they work per year. We factor in data about the labour productivity in these
+                countries and also their GDP per capita growth over the years.
+            </h4>
+            <p class="mt-10"><a class="btn btn-default" href="scene2.html" role="button">Next</a></p>
+        </div>
+    </div>
+
+    <div id="chart1"></div>
+</div>
+</body>
+</html>
