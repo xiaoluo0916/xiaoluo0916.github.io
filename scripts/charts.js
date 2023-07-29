@@ -89,20 +89,42 @@ async function scene2() {
   // Now I can use this dataset:
   function(data) {
 
+  // group the data: I want to draw one line per group
+  const sumstat = d3.group(data, d => d.primary_type); // nest function allows to group the calculation per level of a factor
+
+  // // Add X axis --> it is a date format
+  // const x = d3.scaleTime()
+  //   .domain(d3.extent(data, function(d) { return d.date; }))
+  //   .range([ 0, width ]);
+  // svg.append("g")
+  //   .attr("transform", `translate(0, ${height})`)
+  //   .call(d3.axisBottom(x));
+  
   // Add X axis --> it is a date format
-  const x = d3.scaleTime()
-    .domain(d3.extent(data, function(d) { return d.date; }))
+  const x = d3.scaleLinear()
+    .domain(d3.extent(data, function(d) { return d.year; }))
     .range([ 0, width ]);
   svg.append("g")
     .attr("transform", `translate(0, ${height})`)
-    .call(d3.axisBottom(x));
+    .call(d3.axisBottom(x).ticks(5));
 
+  // // Add Y axis
+  // const y = d3.scaleLinear()
+  //   .domain([0, d3.max(data, function(d) { return +d.value; })])
+  //   .range([ height, 0 ]);
+  // svg.append("g")
+  //   .call(d3.axisLeft(y));
+  
   // Add Y axis
   const y = d3.scaleLinear()
     .domain([0, d3.max(data, function(d) { return +d.value; })])
     .range([ height, 0 ]);
   svg.append("g")
     .call(d3.axisLeft(y));
+  
+  // color palette
+  const color = d3.scaleOrdinal()
+    .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999'])
 
   // const tooltip = d3.select("#slide1")
   //     .append("div")
