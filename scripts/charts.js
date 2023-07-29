@@ -42,8 +42,8 @@ async function scene1() {
 
   // set the dimensions and margins of the graph
   const margin = {top: 10, right: 30, bottom: 30, left: 60},
-  width = 460 - margin.left - margin.right,
-  height = 400 - margin.top - margin.bottom;
+  width = 1000 - margin.left - margin.right,
+  height = 800 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
   const svg = d3.select("#chart1")
@@ -58,7 +58,7 @@ async function scene1() {
 
   // When reading the csv, I must format variables:
   function(d){
-  return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
+  return { date : d3.timeParse("%m/%d/%Y")(d.date), value : d.value }
   }).then(
 
   // Now I can use this dataset:
