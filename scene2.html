@@ -30,7 +30,7 @@ d3.csv("https://raw.githubusercontent.com/xiaoluo0916/xiaoluo0916.github.io/main
 
   // When reading the csv, I must format variables:
   function(d){
-    return { date : d3.timeParse("%m/%d/%Y")(d.date), value : d.value }
+    return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
   },
 
   // Now I can use this dataset:
