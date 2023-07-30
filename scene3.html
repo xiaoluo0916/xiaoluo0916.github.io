@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CS416 Narrative Visualization Project</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <!-- <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script> -->
+    <script src="scripts/charts.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload='scene3()'>
+<div class="container">
+    <div id="slide3">
+        <h2>Research on Crimes in Chicago</h2>
+        <h3>Scene 3: Break down by crime type, and whether the criminals were arrested</h3>
+        <div class="bg">
+            <p class="mt-10">
+                Previoulsy, we saw that the incidents of top 10 crime types are quite significant.
+
+                In the third scene, let's further break down the crime count by primary type as well as whether the 
+                criminals were arrested to understand if the local authority was effective in arresting criminals. 
+            </p>
+            <p class="mt-10">
+            Observations:
+                <ul class="mt-10">- Within the top  10 prevalent crime types, narcotics has almost 100% arrest ratio, 
+                    which is good to know. Battery, other offense and assault have around 20% arrest ratio. The other 
+                    prevalent criminal types have less than 10% arrest ratio, which is not ideal. 
+                </ul>
+                <ul class="mt-10">- Some crime types are more severe than the others in terms of the impact, such as narcotics, 
+                     assault, criminal trespass, weapons violation, offense involving children, crime sexual assault, kidnapping,
+                     homicide, human trafficking. Only narcotics, criminal trespass, weapons violation have over 60% arrest ratio. 
+                     Others have low arrest ratio, which is not ideal. 
+                </ul>
+            </p>
+            <p class="mt-10">
+                As of now, you may wonder how each crime type trends over time. In the next scene, you will have more 
+                flexibility to filter this chart on crime types.   
+            </p>
+            <p class="mt-10"><a class="btn btn-default" href="scene2.html" role="button">Previous</a>
+                <a class="btn btn-default" href="scene4.html" role="button">Next</a></p>
+        </div>
+    </div>
+
+    <div id="chart3"></div>
+</div>
+</body>
+</html>
