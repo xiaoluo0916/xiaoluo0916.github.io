@@ -200,7 +200,12 @@ async function scene4() {
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
   //Read the data
-  d3.csv("https://raw.githubusercontent.com/xiaoluo0916/xiaoluo0916.github.io/main/data/crime%20count%20by%20type%20and%20date.csv").then( function(data) {
+  d3.csv("https://raw.githubusercontent.com/xiaoluo0916/xiaoluo0916.github.io/main/data/crime%20count%20by%20type%20and%20date.csv",
+    // When reading the csv, I must format variables:
+    function(d){
+      return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value, primary_type : d.primary_type }
+      }
+  ).then( function(data) {
 
     // List of groups (here I have one group per column)
     const allGroup = new Set(data.map(d => d.primary_type))
@@ -220,7 +225,7 @@ async function scene4() {
       .range(d3.schemeSet2);
 
     // Add X axis --> it is a date format
-    const x = d3.scaleLinear()
+    const x = d3.scaleTime()
       .domain(d3.extent(data, function(d) { return d.date; }))
       .range([ 0, width ]);
     svg.append("g")
@@ -229,7 +234,7 @@ async function scene4() {
 
     // Add Y axis
     const y = d3.scaleLinear()
-      .domain([0, d3.max(data, function(d) { return +d.n; })])
+      .domain([0, d3.max(data, function(d) { return +d.value; })])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
