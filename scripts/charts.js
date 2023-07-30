@@ -65,52 +65,6 @@ async function scene1() {
 
 // Second scene
 async function scene2() {
-  // // set the dimensions and margins of the graph
-  // const margin = {top: 10, right: 30, bottom: 200, left: 60},
-  // width = 1200 - margin.left - margin.right,
-  // height = 600 - margin.top - margin.bottom;
-
-  // // append the svg object to the body of the page
-  // const svg = d3.select("#chart2")
-  //   .append("svg")
-  //   .attr("width", width + margin.left + margin.right)
-  //   .attr("height", height + margin.top + margin.bottom)
-  //   .append("g")
-  //   .attr("transform", `translate(${margin.left},${margin.top})`);
-
-  // //Read the data
-  // d3.csv("https://raw.githubusercontent.com/xiaoluo0916/xiaoluo0916.github.io/main/data/crime%20count%20by%20type.csv").then( function(data) {
-
-  // // X axis
-  // const x = d3.scaleBand()
-  //   .range([ 0, width ])
-  //   .domain(data.map(d => d.primary_type))
-  //   .padding(0.2);
-  // svg.append("g")
-  //   .attr("transform", `translate(0, ${height})`)
-  //   .call(d3.axisBottom(x))
-  //   .selectAll("text")
-  //     .attr("transform", "translate(-10,0)rotate(-45)")
-  //     .style("text-anchor", "end");
-
-  // // Add Y axis
-  // const y = d3.scaleLinear()
-  //   .domain([0, 220000])
-  //   .range([ height, 0]);
-  // svg.append("g")
-  //   .call(d3.axisLeft(y));
-
-  // // Bars
-  // svg.selectAll("mybar")
-  //   .data(data)
-  //   .join("rect")
-  //     .attr("x", d => x(d.primary_type))
-  //     .attr("y", d => y(d.value))
-  //     .attr("width", x.bandwidth())
-  //     .attr("height", d => height - y(d.value))
-  //     .attr("fill", "#69b3a2")
-
-  // })
 
   // set the dimensions and margins of the graph
   const margin = {top: 30, right: 30, bottom: 160, left: 60},
@@ -142,7 +96,7 @@ async function scene2() {
 
   // Add Y axis
   const y = d3.scaleLinear()
-  .domain([0, 13000])
+  .domain([0, 220000])
   .range([ height, 0]);
   svg.append("g")
   .call(d3.axisLeft(y));
@@ -214,6 +168,38 @@ async function scene3() {
       .keys(subgroups)
       (data)
 
+    // ----------------
+    // Create a tooltip
+    // ----------------
+    const tooltip = d3.select("#chart3")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "5px")
+    .style("padding", "10px")
+
+    // Three function that change the tooltip when user hover / move / leave a cell
+    const mouseover = function(event, d) {
+      const subgroupName = d3.select(this.parentNode).datum().key;
+      const subgroupValue = d.data[subgroupName];
+      tooltip
+          .html("subgroup: " + subgroupName + "<br>" + "Value: " + subgroupValue)
+          .style("opacity", 1)
+
+    }
+    const mousemove = function(event, d) {
+      tooltip.style("transform","translateY(-55%)")
+            .style("left",(event.x)+"px")
+            .style("top",(event.y)-30+"px")
+    }
+    const mouseleave = function(event, d) {
+      tooltip
+        .style("opacity", 0)
+    }
+
     // Show the bars
     svg.append("g")
       .selectAll("g")
@@ -229,6 +215,10 @@ async function scene3() {
           .attr("y", d => y(d[1]))
           .attr("height", d => y(d[0]) - y(d[1]))
           .attr("width",x.bandwidth())
+          .attr("stroke", "grey")
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
   })
 }
 
