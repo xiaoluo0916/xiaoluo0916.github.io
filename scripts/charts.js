@@ -113,7 +113,7 @@ async function scene2() {
   // })
 
   // set the dimensions and margins of the graph
-  const margin = {top: 30, right: 30, bottom: 70, left: 60},
+  const margin = {top: 30, right: 30, bottom: 160, left: 60},
   width = 1200 - margin.left - margin.right,
   height = 600 - margin.top - margin.bottom;
 
@@ -150,12 +150,13 @@ async function scene2() {
   // Bars
   svg.selectAll("mybar")
   .data(data)
-  .join("rect")
-  .attr("x", d => x(d.primary_type))
-  .attr("y", d => y(d.value))
-  .attr("width", x.bandwidth())
-  .attr("height", d => height - y(d.value))
-  .attr("fill", "#69b3a2")
+  .enter()
+  .append("rect")
+    .attr("x", d => x(d.primary_type))
+    .attr("y", d => y(d.value))
+    .attr("width", x.bandwidth())
+    .attr("height", d => height - y(d.value))
+    .attr("fill", "#69b3a2")
 
   })
 }
@@ -163,7 +164,7 @@ async function scene2() {
 // Third scene
 async function scene3() {
   // set the dimensions and margins of the graph
-  const margin = {top: 10, right: 30, bottom: 200, left: 60},
+  const margin = {top: 10, right: 30, bottom: 160, left: 60},
   width = 1200 - margin.left - margin.right,
   height = 600 - margin.top - margin.bottom;
 
