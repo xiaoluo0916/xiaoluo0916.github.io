@@ -200,7 +200,7 @@ async function scene4() {
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
   //Read the data
-  d3.csv("https://raw.githubusercontent.com/xiaoluo0916/xiaoluo0916.github.io/main/data/arrest%20vs%20unarrest%20by%20type.csv").then( function(data) {
+  d3.csv("https://raw.githubusercontent.com/xiaoluo0916/xiaoluo0916.github.io/main/data/crime%20count%20by%20type%20and%20date.csv").then( function(data) {
 
     // List of groups (here I have one group per column)
     const allGroup = new Set(data.map(d => d.primary_type))
