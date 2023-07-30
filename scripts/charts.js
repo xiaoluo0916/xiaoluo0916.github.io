@@ -186,7 +186,7 @@ async function scene3() {
       const subgroupName = d3.select(this.parentNode).datum().key;
       const subgroupValue = d.data[subgroupName];
       tooltip
-          .html("subgroup: " + subgroupName + "<br>" + "Value: " + subgroupValue)
+          .html(subgroupName + "<br>" + "# of reported crimes: " + subgroupValue)
           .style("opacity", 1)
 
     }
